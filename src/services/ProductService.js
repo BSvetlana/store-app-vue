@@ -12,6 +12,12 @@ export default class ProductService {
     list() {
         return products;
     }
+    incrementProduct(product){
+        product.quantity ++;
+    }
+    decrementProduct(product){
+        product.quantity --;
+    }
 }
 
 export const productService = new ProductService();

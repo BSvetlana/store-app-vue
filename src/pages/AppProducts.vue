@@ -5,7 +5,7 @@
             <div class="col-6 mb-4">
               <h3 style="color: #66BB6A;">Product list</h3>
                 <div class="form-group">
-                    <label for="firstName">Search Tearm</label>
+                    <label for="firstName" style="color: #81C784;">Search Tearm</label>
                     <input type="text" class="form-control" id="firstName" placeholder="Search.." v-model='searchTerm'>
                 </div>
                 <table class="table table-bordered">
@@ -18,11 +18,13 @@
                     <tbody>
                         <tr v-for="(product,index) in  filteredProducts " :key="index">
                             <td>{{ product.title }}</td>
-                            <td>{{ product.quantity }}</td>
+                            <td>{{ product.quantity }}
+                                <button @click=" increment(product)" type="button" class="btn btn"  style="float: right;">+</button>
+                                <button @click="decrement(product)" type="button" class="btn btn" style="float:right;" v-if="product.quantity > 0">-</button>
+                            </td>
                         </tr>
                     </tbody>
-                </table>
-                
+                </table>                
             </div>
         </div>
     </div>
@@ -48,6 +50,14 @@ export default {
         })
       }
     },
+    methods: {
+      increment(product) {
+        productService.incrementProduct(product);
+      },
+      decrement(product){
+        productService.decrementProduct(product);
+      }
+    }
 
 }
 </script>
