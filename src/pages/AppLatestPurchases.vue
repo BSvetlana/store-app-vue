@@ -40,7 +40,6 @@
 
 <script>
 import { customerService } from '../services/CustomerService'
-console.log('productList.title')
 export default {
   created(){
       this.customer = customerService.get(this.$route.params.id)
