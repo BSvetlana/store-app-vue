@@ -16,6 +16,9 @@ export default class CustomerService {
     delete(index){
         customers.splice(index,1)
     }
+    add(newCustomer){
+        customers.push(newCustomer)
+    }
 }
 
 export const customerService = new CustomerService();
