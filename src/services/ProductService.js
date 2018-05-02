@@ -18,6 +18,9 @@ export default class ProductService {
     decrementProduct(product){
         product.quantity --;
     }
+    get(id) {
+        return products.find(product => id == product.id)
+    }
 }
 
 export const productService = new ProductService();

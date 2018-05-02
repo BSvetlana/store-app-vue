@@ -10,6 +10,7 @@ import VueRouter from 'vue-router'
 import AppCustomers from './pages/AppCustomers.vue'
 import AppProducts from './pages/AppProducts.vue'
 import AppLatestPurchases from './pages/AppLatestPurchases.vue'
+import BuyProducts from './pages/BuyProduct.vue'
 
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
@@ -20,7 +21,8 @@ const routes = [
   {path: '/', redirect: 'customers​'},
   {path: "/customers​", component: AppCustomers },
   {path: "/products", component: AppProducts },
-  {path: "/customers/:id", component: AppLatestPurchases}
+  {path: "/customers/:id", component: AppLatestPurchases},
+  {path: "/products/:id", component: BuyProducts}
 ]
 
 const router = new VueRouter({

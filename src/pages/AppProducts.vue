@@ -13,14 +13,19 @@
                         <tr>
                             <th scope="col">Product</th>
                             <th scope="col">Quantity</th>
+                            <th scope="col">Buy Product</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(product,index) in  filteredProducts " :key="index">
                             <td>{{ product.title }}</td>
                             <td>{{ product.quantity }}
-                                <button @click=" increment(product)" type="button" class="btn btn"  style="float: right;">+</button>
-                                <button @click="decrement(product)" type="button" class="btn btn" style="float:right;" v-if="product.quantity > 0">-</button>
+                                <button @click=" increment(product)" type="button" class="btn btn"  style="float: right; color: #00BFA5;">+</button>
+                                <button @click="decrement(product)" type="button" class="btn btn" style="float:right; color: #00BFA5;" v-if="product.quantity > 0" :disabled="false">-</button>
+                                <button @click="decrement(product)" type="button" class="btn btn" style="float:right; color: #00BFA5;" v-else :disabled="true">-</button>
+                            </td>
+                            <td>
+                              <router-link :to="'/products/' + product.id" style="color: #66BB6A; text-decoration: none"><b>Buy</b></router-link>
                             </td>
                         </tr>
                     </tbody>
@@ -55,7 +60,10 @@ export default {
         productService.incrementProduct(product);
       },
       decrement(product){
-        productService.decrementProduct(product);
+            productService.decrementProduct(product);
+                 
+                      
+       
       }
     }
 
@@ -67,7 +75,7 @@ export default {
 ::-webkit-input-placeholder {
     color: #C8E6C9;
 }
-.table>thead {
+.table {
     text-align: center
 }
 </style>
